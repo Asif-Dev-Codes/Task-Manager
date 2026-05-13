@@ -1,7 +1,38 @@
-import axios from "axios";
-// import { logout } from "./authSlice";
+// import axios from "axios";
+// // import { logout } from "./authSlice";
 
-const API_URL = "/api/users/register";
+// const API_URL = "/api/users/register";
+
+// // Register user
+// const register = async (userData) => {
+//   const response = await axios.post(API_URL, userData);
+
+//   if (response.data) {
+//     localStorage.setItem("user", JSON.stringify(response.data));
+//   }
+
+//   return response.data;
+// };
+
+// const login = async (userData) => {
+// const response = await axios.post(API_URL + 'login', userData)
+// if (response.data) {
+// localStorage.setItem('user', JSON.stringify(response.data))
+// }
+// return response.data
+// }
+
+// const logout = () => localStorage.removeItem('user')
+
+// const authService = {
+//   register, login, logout
+// };
+
+// export default authService;
+
+import axios from "axios";
+
+const API_URL = "/api/users/";
 
 // Register user
 const register = async (userData) => {
@@ -14,10 +45,23 @@ const register = async (userData) => {
   return response.data;
 };
 
-const logout = () => localStorage.removeItem('user')
+// Login user
+const login = async (userData) => {
+  const response = await axios.post(API_URL + "login", userData);
+
+  if (response.data) {
+    localStorage.setItem("user", JSON.stringify(response.data));
+  }
+
+  return response.data;
+};
+
+const logout = () => localStorage.removeItem("user");
 
 const authService = {
-  register,logout,
+  register,
+  login,
+  logout,
 };
 
 export default authService;
